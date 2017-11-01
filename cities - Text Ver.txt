@@ -1,0 +1,153 @@
+class TreeOfCities {
+
+	constructor() {
+
+		// A tree structure containing geographic items
+		this.geographicData = [
+			{
+				name: "Asia",
+				children: [
+					{
+						name: "Japan",
+						children: [
+							{
+								name: "Tokyo",
+								population: 33200000
+							},
+							{
+								name: "Osaka/Kobe",
+								population: 16425000
+							}
+						]
+					},
+					{
+						name: "China",
+						children: [
+							{
+								name: "Shanghai",
+								population: 10000000
+							},
+							{
+								name: "Shenzhen",
+								population: 8000000
+							}
+						]
+					}
+				]
+			},
+			{
+				name: "Europe",
+				children: [
+					{
+						name: "France",
+						children: [
+							{
+								name: "Ile de France",
+								children: [
+									{
+										name: "Paris",
+										population: 9645000
+									},
+									{
+										name: "Val De Marne",
+										children: [
+											{
+												name: "Creteil",
+												population: 320000
+											},
+											{
+												name: "Charenton Le Pont",
+												population: 100000
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						name: "Germany",
+						children: [
+							{
+								name: "Berlin",
+								population: 3675000
+							},
+							{
+								name: "Frankfurt",
+								population: 2260000
+							}
+						]
+					}
+				]
+			},
+			{
+				name: "North America",
+				children: [
+					{
+						name: "United States of America",
+						children: [
+							{
+								name: "California",
+								children: [
+									{
+										name: "Los Angeles",
+										population: 11789000
+									},
+									{
+										name: "San Francisco",
+										population: 3229000
+									},
+									{
+										name: "San Diego"
+                                        //No pop value here? Intentional?
+									}
+								]
+							},
+							{
+								name: "Washington",
+								children: [
+									{
+										name: "Seattle",
+										population: 2712000
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+
+	}
+
+	// Return an object containing continent names as keys (you can assume 
+	// continents are always top level), and total
+	// population of any children as a value
+	getPopulationByContinent() {
+        
+        // Following Changes by Jason Street   
+        
+        //Store country pops
+        var totalAsia = this.geographicData["0"].children["0"].children["0"].population + this.geographicData["0"].children["0"].children["1"].population + this.geographicData["0"].children["1"].children["0"].population + this.geographicData["0"].children["1"].children["1"].population
+        // window.alert(totalAsia); // - test if code works
+        
+        var totalNorthAmerica = this.geographicData["2"].children["0"].children["0"].children["0"].population + this.geographicData["2"].children["0"].children["0"].children["1"].population + this.geographicData["2"].children["0"].children["1"].children["0"].population;
+        // window.alert(totalNorthAmerica); // - test if code works
+        
+        var totalEurope = this.geographicData["1"].children["0"].children["0"].children["0"].population + this.geographicData["1"].children["0"].children["0"].children["1"].children["0"].population + this.geographicData["1"].children["0"].children["0"].children["1"].children["1"].population + this.geographicData["1"].children["1"].children["0"].population + this.geographicData["1"].children["1"].children["1"].population;
+        // window.alert(totalEurope); // - test if code works
+        
+        var userContinent = window.prompt("Please enter a continent (Europe, North America or Asia).").toLowerCase();
+            if (userContinent == "asia"){
+                window.alert(totalAsia);
+            } else if (userContinent == "north america"){
+              window.alert(totalNorthAmerica);  
+            } else if (userContinent == "europe"){
+              window.alert(totalEurope);
+            } else{
+                window.alert("No valid continent given. Please try again.")
+            }
+            }
+        }
+        
+	
